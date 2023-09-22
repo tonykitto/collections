@@ -1,0 +1,15 @@
+body {text-align: center;background: #eee;margin-top: 0px;}
+#ty {width: 780px; background: #fff; margin-right: auto; margin-left: auto;}
+ul#navbar {padding:0px ; list-style:none; width: 780px; margin-right: auto; margin-left: auto;margin:0px;}
+ul#navbar li {display:inline}
+ul#navbar li {padding:5px 0; width:105px; background:#fff; color:#000; float:left; border-left:5px solid #fff;}
+ul#navbar li a:hover {background:#fffdda; color:#000;}
+img.small {float: right; height: 12px;}
+#doc {float: left; width: 560px; background: #fff; text-align: left; margin-left: 10px;margin-right: 10px;}
+#rightcol {float: right; text-align: center; width: 200px; background: #fff;}
+#topOfCol {margin-top: 40px; background: #FFFBC6;}
+#footer {border-top: 1px solid #000000; clear: both; margin-left: 20 px; padding-top: 10px;}
+p.col_info {text-align: left; background: #FFFBC6;}
+p.caption  {text-align: center;}
+span.standout {font-weight: bold;}
+span.navhead {font-weight: bold;font-size:67%}
