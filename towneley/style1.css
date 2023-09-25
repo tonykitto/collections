@@ -1,0 +1,88 @@
+/* CSS Variables */
+:root {
+  --primary: #eee;
+  --dark: #333;
+  --light: #fff;
+  --shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+}
+
+html {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--dark);
+}
+
+body {
+  background: #eee;
+  margin: 10px 10px;
+  line-height: 1.6;
+}
+
+h1 {text-align: center;}
+
+img.small {
+	float: right; 
+	height: 12px;
+	margin: 1rem 1rem;
+}
+
+img {
+  max-width: 100%;
+}
+
+ul.navigate{
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ul.navigate span:hover {
+  cursor: pointer;
+}
+
+ul.navigate li {
+	display:inline;
+	padding:6px 10px;	
+	width:80;
+    background: var(--primary);
+	color:#000; 
+	float:left;
+}
+
+span.divide{
+  padding: 24px;
+  font-weight: bold;
+}
+
+span.name{
+  font-weight: bold;
+}
+.header{
+    text-align: center;
+  font-weight: 600;
+}
+
+/* display_link */
+.display_link {
+  display: grid;
+  padding: 10px;
+  grid-gap: 20px;
+  background: var(--light);
+  grid-template-columns: repeat(auto-fit, minmax(180px, 300px));
+}
+
+/* Footer */
+#footer {
+	border-top: 1px solid #000000;
+	clear: both;
+}
+
+/* Media Queries */
+@media (max-width: 360px) {
+body {
+  background: #ccc;
+  margin: 20px 20px;
+  line-height: 1.4;
+  }
+
+}
