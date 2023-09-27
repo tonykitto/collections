@@ -31,22 +31,29 @@ img {
 }
 
 ul.navigate{
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+  display: grid;
+  grid-gap: 10px;
+  padding: 0;
+  list-style: none;
+  grid-template-columns: repeat(8, 1fr);
 }
 
-ul.navigate span:hover {
+ul.navigate a:hover {
+  background: var(--dark);
+  color: var(--light);
   cursor: pointer;
 }
 
 ul.navigate li {
-	display:inline;
-	padding:6px 10px;	
-	width:80;
-    background: var(--primary);
-	color:#000; 
-	float:left;
+  background: var(--primary);
+  display: block;
+  text-decoration: none;
+  padding: 0.8rem;
+  text-align: center;
+  color: var(--dark);
+  text-transform: uppercase;
+  font-size: 1.0rem;
+  box-shadow: var(--shadow);
 }
 
 span.divide{
@@ -72,9 +79,10 @@ span.name{
 }
 
 /* Footer */
-#footer {
-	border-top: 1px solid #000000;
-	clear: both;
+footer {
+  margin-top: 2rem;
+  text-align: center;
+  padding: 1rem;
 }
 
 /* Media Queries */
