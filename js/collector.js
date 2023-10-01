@@ -7,11 +7,11 @@ var collector = (function(){
         working_list = []; // working_list updated by display_exhibits
 // sets up new exhibition or shows current selection plus any candidates
     function start(){
-      function test_sessionStorage(){
+      function test_localStorage(){
         try {
-          var key = "testing_sessionStorage";
-          sessionStorage.setItem(key, key);
-          sessionStorage.removeItem(key);
+          var key = "testing_localStorage";
+          localStorage.setItem(key, key);
+          localStorage.removeItem(key);
           return true;
         } 
         catch (e) {
@@ -47,8 +47,8 @@ var collector = (function(){
         return "";
       }
       document.getElementById("report").innerHTML = "";
-      if (! test_sessionStorage()){ 
-        document.getElementById("report").innerHTML = "sessionStorage not available";
+      if (! test_localStorage()){ 
+        document.getElementById("report").innerHTML = "localStorage not available";
         return"";
       }
       if (! localStorage.myTowneley){

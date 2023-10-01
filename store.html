@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<title>exhibition store Apr.2020</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="description" content="Information to help create content for exhibition display">
+<title>exhibition store Oct.2023</title>
 <link rel="stylesheet" href="css/style.css">
 <script src="js/store_exhibition.js"></script>
 </head>
@@ -17,7 +20,7 @@
   <h3>select another exhibition from your file store to replace the current exhibition</h3>
   <div id="action">
     <p>select text file to be loaded</p>
-    <input id="fileInput" accept=".txt" type="file" onchange="record.handleFiles(this.files)" />
+    <label><input id="fileInput" accept=".txt" type="file" onchange="record.handleFiles(this.files)" /></label>
   </div>
 </div>
 <div id="selected_records"></div>

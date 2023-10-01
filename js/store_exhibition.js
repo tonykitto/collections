@@ -9,11 +9,11 @@ var record = (function(){
     new_exhibition_records = {}, // from selected text file
     file_name = "";
   function start(){
-      function test_sessionStorage(){
+      function test_localStorage(){
         try {
-          var key = "testing_sessionStorage";
-          sessionStorage.setItem(key, key);
-          sessionStorage.removeItem(key);
+          var key = "testing_localStorage";
+          localStorage.setItem(key, key);
+          localStorage.removeItem(key);
           return true;
         } 
         catch (e) {
@@ -132,12 +132,12 @@ var record = (function(){
     document.getElementById("loading").innerHTML = "";
     document.getElementById("fileInput").value = "";
     document.getElementById("report").innerHTML = "";
-    if (! test_sessionStorage()){ 
-      document.getElementById("report").innerHTML = "sessionStorage not available";
+    if (! test_localStorage()){ 
+      document.getElementById("report").innerHTML = "localStorage not available";
       return"";
     }
     if (! localStorage.myTowneley){
-      document.getElementById("exhibition_title").innerHTML = "<h3>There is no exhibition to display</h3>";
+      document.getElementById("current_records").innerHTML = "<h3>There is no exhibition to display</h3>";
     }
     else{
       record.exhibition_name = localStorage.myTowneley;
