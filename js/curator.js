@@ -1,5 +1,5 @@
 // curator helps set up your on-line exhibition from objects in the Towneley collections
-// version 1.1 01/05/2020
+// version 1.2 16/09/2023
 var curator = (function(){
     "use strict";
     var exhibition_name = "", // the value of the localStorage item myTowneley
@@ -53,9 +53,7 @@ var curator = (function(){
       }
       if (! localStorage.myTowneley){
         localStorage.clear(); // discard old localStorage used for previous exhibtions
-        localStorage.setItem("my_paoil120", "paoil/paoil120.jpg\tZ is for Zoffany - Charles Townley among his marbles by Johann Zoffany");
-        localStorage.setItem("my_hha25","hha/hha25.jpg\tA is for Animal heads and horns - Cokes Hartebeest head in the attic");
-        localStorage.setItem("myTowneley", "starting with Towneley from A to Z");
+        localStorage.setItem("myTowneley", "nothing chosen");
       }
       exhibition_name = localStorage.myTowneley;
       document.getElementById("exhibition_title").innerHTML = "<h3>"+exhibition_name+"</h3>";
@@ -158,7 +156,7 @@ var curator = (function(){
           "<button class=\"changes\" onclick= curator.make_changes(true)>Make exhibition changes</button>";
         document.getElementById("close_exhibition").innerHTML = "<span style=\"float:right\">more about "+
                                 "<a href=\"about.html\" class=\"about\">making exhibition changes</a>"+
-                                " and about <a href=\"store.html\" class=\"about\"> the exhibition store</a></span>";
+                                " and about <a href=\"store.html\" class=\"about\"> the exhibition store page</a></span>";
         return "";
       }
       if (! exhibition_name){return ""; }
@@ -173,7 +171,7 @@ var curator = (function(){
             object_number+"\" class=\"label\">"+
             exhibition_records.selected[object_number].label+"</textarea><br>"+
             "<button class=\"accept\" onclick= curator.modify_selected(\""+
-            object_number+"\")>edit label</button> <span class=\"divide\"> OR </span> "+
+            object_number+"\")>update label</button> <span class=\"divide\"> OR </span> "+
             "<button class=\"discard\" onclick= curator.discard_selected(\""+
             object_number+"\")>remove object</button></p></div>";
         }

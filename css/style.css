@@ -76,7 +76,9 @@ img {
   font-size: 1.2rem;
   img: hover;
 }
-
+h1{
+	text-align: center;
+}
 p.top{
   text-align: center;
   font-weight: bold;
@@ -84,6 +86,7 @@ p.top{
 
 p.overview{
   max-width: 800px;
+  margin: 1rem;
 }
 .list_left img:hover {
   cursor: pointer;
@@ -186,7 +189,7 @@ input[type="file"]: {
   cursor: pointer;
 }
 .header{
-    text-align: center;
+  text-align: center;
   font-weight: 600;
 }
 .point_to {
@@ -211,6 +214,9 @@ input[type="file"]: {
 }
 #intro{
   max-width: 800px;
+}
+#describe{
+  background: var(--light);
 }
 /* Media Queries */
 @media (max-width: 360px) {
