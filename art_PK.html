@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" 
+  content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="A display of the Indian Company School paintings collection at Towneley Art Gallery and Museum">
+  <meta name="generator" content="amuse 0.0">
+  <title>Towneley Collections Viewer - Indian Company School paintings collection</title>
+  <link rel="stylesheet" href="css/fine_art_style.css">
+  <script src="js/fine_art_Viewer.js"></script>
+  <script src="objects/art_PK.js"></script>
+  <script type="text/javascript" >
+    function collection(){
+      window.Viewer.start("art_PK");
+      return ""; 
+    }
+    onload = collection;
+  </script>
+</head>
+<body>
+<a name="top"></a>
+<div id="art_viewer">
+  <div id="logo"><p><a href="fine_art_index.html"><img src="images/Ty_logo.gif" alt="Towneley logo" /><br>Collections</a></p><p class="top">Towneley Hall <br>Art Gallery and Museum</p></div>
+  <h2>Indian Company School paintings collection</h2>
+  <div id="report">Failed to load javascript </div>
+</div>
+<div id="content">
+  <p class="overview">An album of <em>Indian Company School</em> paintings (gouache on mica) presented to Burnley Corporation by H. M. Queen Mary though the Victoria and Albert Museum in June 1939.<em>Company painting</em> is a broad term for a variety of hybrid styles that developed as a result of European (especially British) influence on Indian artists from the early 18th to the 19th centuries. The V&amp;A has a collection of over 2,000 company paintings that can be seen on-line.</p>
+  <div id="search" class="list_left">
+    <p><label for="search_box"><b>Input keywords to search for records</b></label>
+      <input type="text" id="search_box"><button id="clear_search">reset</button></p>
+  </div>
+  <div id="show_pages" class="list_left">
+    <p>Show: 
+      <button id="button5" class="btn_selected" onclick="Viewer.click_button(5)">5</button>
+      <button id="button10" class="btn" onclick="Viewer.click_button(10)">10</button>
+      <button id="button20" class="btn" onclick="Viewer.click_button(20)">20</button>
+      <button id="button40" class="btn" onclick="Viewer.click_button(40)">40</button>
+      <button id="button100" class="btn" onclick="Viewer.click_button(100)">100</button>
+      items per page
+    </p>
+    <img src="images/previous.gif" alt="previous" id="move_back">
+    <span id="show_number"></span>
+    <img src="images/next.gif" alt="next" id="move_forward">
+  </div>
+</div>
+<div id="show_image"></div>
+<div id="show_record"></div>
+<div id="portfolio"></div>
+<a href="#top">Back to top of page</a>
+</body>
+</html>
