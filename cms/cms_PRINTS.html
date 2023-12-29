@@ -1,0 +1,47 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name=viewport content="width=device-width">
+<meta name="description" content="An extract of contents from the prints collection CMS at Towneley Art Gallery and Museum.">
+<title>Towneley Collections Viewer</title>
+<link rel="stylesheet" href="css/cms_style.css">
+<script src="js/cms_Viewer.js"></script>
+<script src="js/amuse.js"></script>
+<script src="objects/cms_PRINTS.js"></script>
+<script type="text/javascript" >
+function start(){
+  var query;
+  if (window.location.search && (window.location.search.charAt(0)==="?")){
+    query =  window.location.search.slice(1);
+  }
+  else{ query = ""}
+amuse.session_init("cms_PRINTS",query);return ""; }
+onload = start;
+</script>
+</head>
+<body>
+<a name="top"></a>
+	<div id="logo">
+		<a href="index.html"><img src="images/Ty_logo.gif" alt="Towneley logo" />Collections</a><p class="top">Towneley Hall Art Gallery and Museum<br>
+		<b>prints collection</b></p>
+	</div>
+	<div id="report">Failed to load javascript</div>
+	<div id="content">
+		<choices>
+			<div id="record" class="list_left">
+				<label for="object_number"><b>Select an object</b></label>
+				<input type="text" id="object_number" />
+			</div>
+			<div id="filter" class="list_left">
+				<label for="filter_box"><b>Search contents</b></label>
+				<input type="text" id="filter_box">
+			</div>
+			<div id="sort" class="list_left"></div>
+			<div id="browser" class="list_left"></div>
+		</choices>
+		<result>
+			<div id="object"></div>
+			<div id="details"></div>
+		</result>
+	</div>
+<footer><a href="#top">Back to top of page</a> <span class="copyr">&copy; Towneley Hall Art Gallery and Museum 2023</span></footer>
+
+</body></html>

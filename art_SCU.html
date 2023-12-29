@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" 
+  content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Sculpture collection at Towneley Art Gallery and Museum">
+  <meta name="generator" content="amuse 0.0">
+  <title>Towneley Collections Sculpture</title>
+  <link rel="stylesheet" href="css/fine_art_style.css">
+  <script src="js/fine_art_Viewer.js"></script>
+  <script src="objects/art_SCU.js"></script>
+  <script type="text/javascript" >
+    function collection(){
+      window.Viewer.start("art_SCU");
+      return ""; 
+    }
+    onload = collection;
+  </script>
+</head>
+<body>
+<a name="top"></a>
+<div id="fine_art_viewer">
+  <div id="logo"><p><a href="fine_art_index.html"><img src="images/Ty_logo.gif" alt="Towneley logo" /><br>Collections</a></p><p class="top">Towneley Hall <br>Art Gallery and Museum</p></div>
+  <h2>Sculpture collection</h2>
+  <div id="report">Failed to load javascript </div>
+</div>
+<div id="content">
+  <p class="overview">A mixture of marble busts, plaster casts and bronzes, ranging from 16th to 21st century. The first gifts in the museum's early years were five marble busts, given by Edward Stocks Massey, to enhance the Entrance Hall and the first purchases were plaster casts to furnish the chapel in 1905. The 1920s saw the commissioning of two busts by Alfred Gilbert and the long term loan of the Towneley family busts, which were finally purchased in the 21st century.</p>
+  <div id="search" class="list_left">
+    <p><label for="search_box"><b>Input keywords to search for records</b></label>
+      <input type="text" id="search_box"><button id="clear_search">reset</button></p>
+  </div>
+  <div id="show_pages" class="list_left">
+    <p>Show: 
+      <button id="button5" class="btn_selected" onclick="Viewer.click_button(5)">5</button>
+      <button id="button10" class="btn" onclick="Viewer.click_button(10)">10</button>
+      <button id="button20" class="btn" onclick="Viewer.click_button(20)">20</button>
+      <button id="button40" class="btn" onclick="Viewer.click_button(40)">40</button>
+      <button id="button100" class="btn" onclick="Viewer.click_button(100)">100</button>
+      items per page
+    </p>
+    <img src="images/previous.gif" alt="previous" id="move_back">
+    <span id="show_number"></span>
+    <img src="images/next.gif" alt="next" id="move_forward">
+  </div>
+</div>
+<div id="show_image"></div>
+<div id="show_record"></div>
+<div id="portfolio"></div>
+<a href="#top">Back to top of page</a>
+</body>
+</html>
