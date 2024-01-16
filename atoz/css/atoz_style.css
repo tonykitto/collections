@@ -61,7 +61,7 @@ p.top{
 .column {max-width: 33em; }
 .index_list {max-width: 240px;}
 
-summary b { cursor: pointer; }
+summary b { color: blue; cursor: pointer; }
 
 /* Media Queries */
 @media (max-width: 400px) {
