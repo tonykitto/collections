@@ -19,6 +19,7 @@ https://tonykitto.github.io/collections/atoz/anderton.html
 https://tonykitto.github.io/collections/atoz/animal_heads_horns.html
 https://tonykitto.github.io/collections/atoz/archaeology.html
 https://tonykitto.github.io/collections/atoz/arms_armour.html
+https://tonykitto.github.io/collections/atoz/artists_list.html
 https://tonykitto.github.io/collections/atoz/art_gallery.html
 https://tonykitto.github.io/collections/atoz/art_uk.html
 https://tonykitto.github.io/collections/atoz/austerberry.html
@@ -34,6 +35,7 @@ https://tonykitto.github.io/collections/atoz/book_illustrations.html
 https://tonykitto.github.io/collections/atoz/booth_collection.html
 https://tonykitto.github.io/collections/atoz/brew_house.html
 https://tonykitto.github.io/collections/atoz/bridgeman_images.html
+https://tonykitto.github.io/collections/atoz/building_summary.html
 https://tonykitto.github.io/collections/atoz/bullock.html
 https://tonykitto.github.io/collections/atoz/burnley_council_minutes.html
 https://tonykitto.github.io/collections/atoz/burnley_room.html
@@ -77,6 +79,7 @@ https://tonykitto.github.io/collections/atoz/epstein.html
 https://tonykitto.github.io/collections/atoz/ethnography.html
 https://tonykitto.github.io/collections/atoz/exhibition_catalogues.html
 https://tonykitto.github.io/collections/atoz/family_dining_room.html
+https://tonykitto.github.io/collections/atoz/family_history_timeline.html
 https://tonykitto.github.io/collections/atoz/family_library.html
 https://tonykitto.github.io/collections/atoz/family_portraits.html
 https://tonykitto.github.io/collections/atoz/fireplaces.html
@@ -130,6 +133,7 @@ https://tonykitto.github.io/collections/atoz/military_medals.html
 https://tonykitto.github.io/collections/atoz/military_room.html
 https://tonykitto.github.io/collections/atoz/minerals.html
 https://tonykitto.github.io/collections/atoz/museum_archive.html
+https://tonykitto.github.io/collections/atoz/museum_history_timeline.html
 https://tonykitto.github.io/collections/atoz/museum_shop.html
 https://tonykitto.github.io/collections/atoz/natural_history.html
 https://tonykitto.github.io/collections/atoz/natural_history_centre.html
@@ -142,6 +146,7 @@ https://tonykitto.github.io/collections/atoz/object_entry_form.html
 https://tonykitto.github.io/collections/atoz/object_number.html
 https://tonykitto.github.io/collections/atoz/oil_paintings.html
 https://tonykitto.github.io/collections/atoz/outside_tour.html
+https://tonykitto.github.io/collections/atoz/paoil117.html
 https://tonykitto.github.io/collections/atoz/peregrine_edward_towneley_(1762-1846).html
 https://tonykitto.github.io/collections/atoz/petre_family.html
 https://tonykitto.github.io/collections/atoz/photographs.html
