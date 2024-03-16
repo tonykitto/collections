@@ -26,15 +26,17 @@ onload = start;
 	<div id="report">Failed to load javascript</div>
 	<div id="content">
 		<choices>
-			<div id="record" class="list_left">
-				<label for="object_number"><b>Select an object</b></label>
-				<input type="text" id="object_number" />
-			</div>
+			<div id="sort" class="list_left"></div>
 			<div id="filter" class="list_left">
 				<label for="filter_box"><b>Search contents</b></label>
 				<input type="text" id="filter_box">
 			</div>
-			<div id="sort" class="list_left"></div>
+    <p><span class="mover" onclick=Viewer.move_start()> <b>&lt;&lt;</b>&emsp; </span>
+		<span class="mover" onclick=Viewer.move_back()> <b>&lt;</b>&emsp; </span>
+		<span id="show_number"></span>
+		<span class="mover" onclick=Viewer.move_forward()> &emsp;<b>&gt;</b> </span>
+		<span class="mover" onclick=Viewer.move_end()> &emsp;<b>&gt;&gt;</b></span>
+	</p>
 			<div id="browser" class="list_left"></div>
 		</choices>
 		<result>

@@ -57,6 +57,10 @@ ul {padding-inline-start: 20px; }
   background: var(--light);
   grid-template-columns: repeat(auto-fit, minmax(180px, 360px));
 }
+.mover {
+	span: hover;
+	cursor: pointer;
+}
 
 .navigate{
     max-width: 800px;

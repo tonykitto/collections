@@ -2,13 +2,13 @@
 
 var Viewer = (function(){
 	"use strict";
-	var version = "2.1.1",
-	version_date = "2023-11-27",
+	var version = "4",
+	version_date = "2024-03-15",
 	collection, // the museum collection object 
 	mandatory, // property required for every object in the museum collection
 	full_list, // a list of object numbers for all objects in the museum collection
-	filtered_list, // subset of full_list according to value of filter_box
-	working_list, // filtered_list sorted according to sort_property value
+	property_list, // subset of full_list according to value of property_box
+	working_list, // property_list sorted according to filtered_ value
 	filter_input, // filter box value
 	sort_property, // update_selected_sort handles change of property value list
 	names, // object maps object_number to position in working_list
@@ -54,7 +54,7 @@ var Viewer = (function(){
 	  }
 	
 	  var id;
-	      document.getElementById("report").innerHTML = "<details class=\"column\"><summary>Search help</summary>[with keyboard]<h3>Selecting an object number</h3><ul><li>You can select an object to be displayed by typing in the object number and then pressing the tab or return key. If the object number does not match an existing object, the object with the nearest matching object number is selected.</li><li> Alternatively, simply focussing on the object number box and pressing the keyboard up and down arrow keys will display the next higher or lower object number in the list.</li><li>You can move directly to any object by touching the blue object number within the object list.</li></ul><h3>Search contents</h3><p>You find specific objects by typing in keywords <b>and then pressing the tab or return key</b>. Only objects with content matching the keywords will be included in the list. If neither tab nor return key is pressed, the words can later be invoked by select a property value from the property drop-down list(see below).The words are case-insensitive and may be embedded in longer words. Use double quotes to match case-sensitive sequences.</p><h3>sort objects by property value</h3><p>You can select any property name from the drop-down list to sort the list by that property's values, filtering out any object with an empty value, for example 'image' lists only objects with an image. The drop-down list is ordered with the least used properties at the bottom of the list.</p><p>If there are any additional keywords waiting in the input keyword box, these are also applied to further reduce the object display list.</p><hr>[with mobile (Gboard or similar without return key)],<p>You can only complete the search request by changing the sort key (eg. from object_number to briefly). Any typing in the object number box is made irrelevant.</p></details>";
+	      document.getElementById("report").innerHTML = "<details class=\"column\"><summary>Search help</summary>Search contents</h3><p>You find specific objects by typing in keywords to match the chosen property value<b> and then pressing the tab or return key</b>. The words are case-insensitive and may be embedded in longer words. Use double quotes to match case-sensitive sequences. If sorting by object_number, a keyword  matching any property value is selected.</p></details>";
 	  collection = a_collection;
 	  if ("$props" in collection){
 		mandatory = collection.$props[0];
@@ -67,7 +67,7 @@ var Viewer = (function(){
 		}
 		full_list = nat_sort(full_list);
 	  }
-	  filtered_list = full_list;
+	  property_list = full_list;
 	  working_list =  full_list;
 	  filter_input = "";
 	  sort_property = "";
@@ -85,11 +85,9 @@ var Viewer = (function(){
 	  document.getElementById("filter_box").value = ""; 
 	  document.getElementById("filter_box").autocomplete = "off"
 	  document.getElementById("filter_box").onkeydown = Viewer.filter_list;
-	  document.getElementById("object_number").onkeydown = Viewer.choose_object;
-	  document.getElementById("object_number").autocomplete = "off"
 	  start_sort_list();
 	  display_list();
-	  document.getElementById("object_number").value = 
+	  document.getElementById("show_number").innerText = working_list[working_list_number];
 	  working_list[working_list_number];
 	  display_object(working_list[working_list_number]);
 	  document.getElementById("selected_sort").selectedIndex=0;
@@ -142,8 +140,8 @@ var Viewer = (function(){
 	  }
 
 	  var object, image_shown, content, view_groups, group, key_list, group_result;
-	  document.getElementById("object_number").value = object_number;
 	  working_list_number = names[object_number];
+	  document.getElementById("show_number").innerText = working_list[working_list_number];
 	  object = collection.objects[object_number];
 	  image_shown = false;
 	  if (("image" in object) && (object.image.toLowerCase().indexOf(".jpg")>0)){
@@ -178,64 +176,6 @@ var Viewer = (function(){
 	  document.body.scrollIntoView();
 	  return "";
 	}
-// choose_object handles user input to select the next museum object to display	   
-	function choose_object(e){
-	  function best_match(text){
-		function match(x, y){
-		  if (x.charAt(0) !== y.charAt(0)){ return 0; }
-		  if (x.length === 1){ return 1; }
-		  if (y.length === 1){ return 1; }
-		  return 1 + match(x.slice(1), y.slice(1));
-		}
-		
-		var best_count = text.length;
-		var nearest = working_list[0];
-		var current_count = match(text, nearest);
-		if (current_count === best_count){ return nearest; }
-		var length = working_list.length;
-		var latest = "";
-		var count = 0;
-		for (var i=1; i<length; i++ ){
-		  latest = working_list[i];
-		  count = match(text, latest);
-		  if (count === best_count){ return latest; }
-		  if (count > current_count){
-			current_count = count;
-			nearest = latest;
-		  }
-		}
-		return nearest;
-	  }
-	  
-	  var keyCode, text, object_number;
-	  if (typeof e === "number"){keyCode = e; }
-	  else{
-		keyCode = (window.event) ? event.keyCode : e.keyCode;
-	  }
-	  if ((keyCode === 9) || (keyCode === 13)){
-		text = rinse(document.getElementById("object_number").value);
-		if (text in names){ object_number = text; }
-		else{ object_number = best_match(text); }
-	  }
-	  else if (keyCode === 40){
-		if (working_list_number < (working_list.length-1)){
-		  working_list_number += 1;
-		  object_number = working_list[working_list_number];
-		}
-		else{ return ""; }
-	  }
-	  else if (keyCode === 38){
-		if (working_list_number > 0){
-		  working_list_number -= 1;
-		  object_number = working_list[working_list_number];
-		}
-		else{ return ""; }
-	  }
-	  else{ return ""; }
-	  document.getElementById("object_number").value = object_number;
-	  display_object(object_number);
-	  return "";
-	}
 // filter_list handles the filter box to select which objects to retain in the display list	 
 	function filter_list(e){
 	  // match_tags returns list of object_numbers where $tags matches a list of tags
@@ -264,30 +204,37 @@ var Viewer = (function(){
 	  }
 	  // match_string returns object_numbers where string matches a property value
 	  // if lower_case is true, match is case insensitive
-	  function match_string(objects, list, string, lower_case){
-		var matches, list_length, i, object, property, value;
-		matches = [];
-		list_length = list.length;
-		for (i=0; i<list_length; i++){
-		  object = objects[list[i]];
-		  for (property in object){
-			if (property.charAt(0) !=="$"){
-			  value = object[property];
+		function match_string(objects, list, string, lower_case){
+			var matches, list_length, i, object, property, value;
+			matches = [];
+			list_length = list.length;
+			for (i=0; i<list_length; i++){
+				object = objects[list[i]];
+				if (sort_property == ""){
+					for (property in object){
+						if (property.charAt(0) !=="$"){
+							value = object[property];
+						}
+						else{
+							if (property !== "$tags"){ // $tags only matched against #keyword
+								value = object[property].join("\t");
+							}
+						}
+						if (lower_case){ value = value.toLowerCase(); }
+						if (value.indexOf(string)>=0){
+							matches.push(list[i]);
+							break;
+						}
+					}
+				}
+				else{
+					value = object[sort_property];
+					if (lower_case && value){ value = value.toLowerCase(); }
+					if (value && value.indexOf(string)>=0){ matches.push(list[i]);}
+				}
 			}
-			else{
-			  if (property !== "$tags"){ // $tags only matched against #keyword
-				value = object[property].join("\t");
-			  }
-			}
-			if (lower_case){ value = value.toLowerCase(); }
-			if (value.indexOf(string)>=0){
-			  matches.push(list[i]);
-			  break;
-			}
-		  }
-		}
 		return matches;
-	  }
+	}
 	  // extract_quotes removes quoted strings from text and returns both in object
 	  function extract_quotes(text){
 		var quotes, input, strings, quote, endquote, string;
@@ -329,16 +276,14 @@ var Viewer = (function(){
 		filter_input = document.getElementById("filter_box").value;
 		text = rinse(filter_input);
 		if (! text){
-		  document.getElementById("filter_box").value = "";
-		  filter_input = "";
-		  filtered_list = full_list;
-		  if (sort_property){ update_sort_record(sort_property); }
-		  else{
-			working_list = full_list;
+			document.getElementById("filter_box").value = "";
+			filter_input = "";
+			property_list = full_list;
+			update_sort_record(sort_property);
 			browsing();
-		  }
-		  return ""; 
+			return ""; 
 		}
+		document.getElementById("filter_box").value = text;
 		if (text in collection.objects){ 
 		  local_list = [text]; 
 		}
@@ -371,62 +316,30 @@ var Viewer = (function(){
 		  }
 		}
 		if (local_list.length >0){
-		  filtered_list = local_list;
-		  if (! sort_property){
+			property_list = local_list;
 			working_list = local_list;
 			browsing();
-		  }
-		  else{
-			update_sort_record(sort_property);
-		  }
 		}
 		else{
 		  alert("No records matching "+text+" found");
 		  document.getElementById("filter_box").value = "";
 		  filter_input = "";
-		  filtered_list = full_list;
+		  property_list = full_list;
 		  update_sort_record(sort_property);
 		}
 	  }
 	  return "";
 	}
-/*	update_sort_record first processes any outstanding filter_box value, then
- *	the filtered_list is filtered and sorted according to the sort_property.
- *	If the resulting sorted list is empty, the sort property reverts to the
- *	previous sort property value or discards the sort */  
+//	update_sort_record empties the  search box and updates the  property_list according to the sort_property.
 	function update_sort_record(property){
-	  function discard_sort(){
-		sort_property = "";
-		document.getElementById("selected_sort").value = "";
-		working_list = filtered_list;
+		document.getElementById("filter_box").value = "";
+		filter_input="";
+		property_list = full_list;
+		sort_property = property;
+		if (property){working_list = objects_sorted_list(true); }
+		else{ working_list = full_list; }
 		browsing();
-		return "";
-	  }
-	
-	  var current_filter, old_sort;
-	  current_filter = document.getElementById("filter_box").value;
-	  if (current_filter !== filter_input){ filter_list(13); }
-	  if (! property){ // object_number only
-		discard_sort();
-		return "";
-	  }
-	  old_sort = sort_property;
-	  sort_property = property;
-	  working_list = objects_sorted_list();
-	  if (working_list.length > 0){ browsing(); }
-	  else{ 
-		alert("The currently selected objects have no sort property "+sort_property);
-		if (old_sort !== sort_property){
-		  document.getElementById("selected_sort").value = old_sort;	 
-		  update_sort_record(old_sort);
-		}
-		else{ discard_sort(); }
-	  }
 	  return "";
-	}
-// current_object_number returns the object_number of the museum object being display		
-	function current_object_number(){
-	  return working_list[working_list_number];
 	}
 // last_object_number returns the value to be logical increased by the next object added	
 	function last_object_number(){
@@ -487,23 +400,22 @@ var Viewer = (function(){
 	  }
 	  working_list_number = 0;
 	  display_list();
-	  document.getElementById("object_number").value = working_list[working_list_number];
 	  display_object(working_list[working_list_number]);
 	  return "";
 	}	 
-/* objects_sorted_list returns the filtered_list sorted according to the sort_property
+/* objects_sorted_list returns the property_list sorted according to the sort_property
  * value. Objects without the sort_property are omitted .
  */	  
 	function objects_sorted_list(){
 	  var list, prop_name, prop_value, sorted_list;
 	  list = [];
-	  for (var i=0; i<filtered_list.length; i++ ){
+	  for (var i=0; i<property_list.length; i++ ){
 		prop_name = "";
-		if (sort_property in collection.objects[filtered_list[i]]){
-		  prop_value = collection.objects[filtered_list[i]][sort_property];
+		if (sort_property in collection.objects[property_list[i]]){
+		  prop_value = collection.objects[property_list[i]][sort_property];
 		  if (prop_value){ prop_name = prop_value+"\t"+prop_name; }
 		}
-		if (prop_name){ list.push(prop_name+"\t"+filtered_list[i]); }
+		if (prop_name){ list.push(prop_name+"\t"+property_list[i]); }
 	  }
 	  sorted_list = nat_sort(list);
 	  list = []; // remove property headers
@@ -512,11 +424,35 @@ var Viewer = (function(){
 	  }
 	  return list;
 	}
+	function move(number){
+		var object_number;
+		working_list_number = number;
+		object_number = working_list[working_list_number];
+		 document.getElementById("show_number").innerText = object_number;
+		display_object(object_number);
+		return "";
+	}
+	function  move_start(){
+		if (working_list_number>0){ move(0); }
+		return '';
+	}
+	function  move_forward(){
+		if (working_list_number+1<working_list.length){ move(working_list_number+1);}
+		return '';
+	}
+	function  move_back(){
+		if (working_list_number>0){move(working_list_number-1);}
+		return '';
+	}
+	function  move_end(){
+		if (working_list_number+1<working_list.length){move(working_list.length-1);}
+		return '';
+	}
 // about for tests
 	function about(){
 	  return { "version": version, "version_date": version_date,
 		"collection": collection, "mandatory": mandatory,
-		"full_list": full_list,"filtered_list": filtered_list,
+		"full_list": full_list,"property_list": property_list,
 		"working_list": working_list,"filter_input": filter_input,
 		"sort_property": sort_property,
 		"names": names, "working_list_number": working_list_number,
@@ -528,12 +464,14 @@ var Viewer = (function(){
 	  "start": start,
 	  "display_list": display_list,
 	  "display_object": display_object,
-	  "choose_object": choose_object,
 	  "filter_list": filter_list,
 	  "update_sort_record": update_sort_record,
-	  "current_object_number": current_object_number,
 	  "browsing": browsing,
 	  "last_object_number": last_object_number,
+	  "move_start" : move_start,
+	  "move_end" : move_end,
+	  "move_back" : move_back,
+	  "move_forward" : move_forward,
 	  "about": about
 	};
   })();
